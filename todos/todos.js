@@ -1,7 +1,6 @@
 import { 
     checkAuth, 
     createTodo, 
-    completeTodo,
     getTodos,
     logout,
     deleteAllTodos, 
@@ -22,8 +21,9 @@ todoForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = new FormData(todoForm);
     const todo = data.get('todo');
-    const response = await createTodo(todo);
+    await createTodo(todo);
     displayTodos();
+    todoForm.reset();
 });
 
 // create todo state
@@ -56,8 +56,13 @@ logoutButton.addEventListener('click', () => {
 });
 
 
-deleteButton.addEventListener('click', async() => {
+deleteButton.addEventListener('click', async () => {
     // delete all todos
     // modify state to match
     // re displayTodos
+    if (confirm('Are you sure you want to delete all todos?')) {
+        const response = await deleteAllTodos();
+        displayTodos();
+        return response;
+    }
 });

@@ -11,7 +11,7 @@ export function renderTodo(newTodo) {
         todoEl.addEventListener('click', async () => {
             const response = await completeTodo(newTodo.id);
             todoEl.classList.add('complete');
-            console.log(response)
+            return response;
         });
         todoEl.classList.add('incomplete');
 
