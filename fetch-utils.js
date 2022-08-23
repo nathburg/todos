@@ -21,7 +21,7 @@ export async function getTodos() {
 }
 
 export async function completeTodo(id) {
-    const response = client.from('todos').update ({ complete: true }).match({ 'id': id });
+    const response = await client.from('todos').update ({ complete: true }).match({ id });
     return checkError(response);
 }
 

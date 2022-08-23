@@ -9,9 +9,9 @@ export function renderTodo(newTodo) {
     // depending on whether the todo is complete, give the div the appropriate css class ('complete' or 'incomplete')
     if (!newTodo.complete) {
         todoEl.addEventListener('click', async () => {
-            await completeTodo(newTodo.id);
+            const response = await completeTodo(newTodo.id);
             todoEl.classList.add('complete');
-
+            console.log(response)
         });
         todoEl.classList.add('incomplete');
 
